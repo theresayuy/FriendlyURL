@@ -1,0 +1,36 @@
+form.EnterURL {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: auto; /* center this part horizontally */
+	text-align: center;
+}
+
+.FormInput {
+	padding: 12px 12px;
+}
+
+input[type=text] {
+	font-size: 48px;
+	padding: 8px 4px;
+	text-align: center;
+	border: 2px solid #4169E1;
+	border-radius: 12px;
+	color: #4169E1;
+}
+
+input[type=text]:focus {
+	outline: none; /* no black outline when you are typing */
+}
+
+input[type=submit] {
+	background-color: #4169E1;
+	font-size: 24px;
+	font-weight: bold;
+	color: white;
+	padding: 12px 18px;
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
+}
