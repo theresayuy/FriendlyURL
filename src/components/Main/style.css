@@ -1,0 +1,41 @@
+@import url("../../styles/honey-mints-font.css");
+@import url("../../styles/please-write-song-font.css");
+
+.Main {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: auto; /* center horizontally */
+	text-align: center;
+}
+
+.Unselectable-Text {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	padding: 12px 12px;
+}
+
+h1 {
+	color: #007ea7;
+	font-size: 120px;
+	font-weight: bold;
+	margin: 24px;
+	text-shadow: 3px 3px white, 6px 6px #003459;
+	font-family: HoneyMintsFF;
+}
+
+p.Subtitle {
+	color: #003459;
+	font-size: 48px;
+	font-weight: bold;
+	font-family: PleaseWriteSongFF;
+}
+
+p.Short-URL {
+	font-size: 24px;
+	background-color: rgba(255, 255, 255, 0.6);
+	font-family: PleaseWriteSongFF;
+}

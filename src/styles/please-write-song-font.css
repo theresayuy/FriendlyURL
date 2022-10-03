@@ -1,0 +1,10 @@
+@font-face {
+	font-family: PleaseWriteSongFF;
+	src: url("../assets/fonts/please_write_me_a_song/font.ttf");
+}
+
+@font-face {
+	font-family: PleaseWriteSongFF;
+	src: url("../assets/fonts/please_write_me_a_song/font.ttf");
+	font-weight: bold;
+}
