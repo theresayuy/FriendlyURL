@@ -1,8 +1,9 @@
-import { useRef } from 'react';
+import React, { useRef } from 'react';
+import { handleSubmit } from './utils';
 import './style.css';
 
 function EnterURL(props) {
-	const urlInputRef = useRef(null);
+    const urlInputRef = useRef(null);
 
     return (
         <form
@@ -11,10 +12,8 @@ function EnterURL(props) {
             spellCheck="false"
             onSubmit={(event) => {
                 event.preventDefault();
-                props.setURLInfo({
-                    long: urlInputRef.current.value,
-                    short: "SHORT URL"
-                });
+                handleSubmit(props.getState, props.setState,
+                    urlInputRef.current.value.trim());
             }}
         >
             <div className="FormInput">

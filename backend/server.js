@@ -1,23 +1,22 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
+const cors = require("cors");
 const urlRoute = require('./routes/url');
 const redirectRoute = require('./routes/redirect');
-const app = express();
+const connection = require('./db-config');
 const PORT = process.env.PORT || 8080
 
-require("dotenv").config();
-
-// database connection
-const connection = require('./db-config')
-connection.once('open', () => console.log('DB Connected'))
-connection.on('error', () => console.log('Error'))
-
-// backend
+// init app
+const app = express();
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json()); // parse incoming request body in JSON format
 
-// routes
+// database connection
+connection.once('open', () => console.log('DB Connected'));
+connection.on('error', () => console.log('Error'));
+
+// setup routes
 app.use("/api", urlRoute);
 app.use("/", redirectRoute);
 
