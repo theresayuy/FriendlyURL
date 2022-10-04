@@ -1,0 +1,16 @@
+img {
+    position: absolute;
+    transform: rotate(0deg);
+    animation: RotateStar 5s linear infinite;
+    pointer-events: none; /* prevent save image context menu from popping up 
+        when user right clicks on star */
+}
+
+@keyframes RotateStar {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
