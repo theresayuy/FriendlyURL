@@ -1,53 +1,44 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
+
 import EnterURL from '../EnterURL';
-import { getIndexOfLongURL, 
-	axiosGet, axiosPost } from './utils';
+
+import { axiosGet } from './utils';
 import './style.css';
 
 function Main() {
-    const [state, setState] = useState({
-		doc: {long: "", short: "", id: ""}, // mongodb data of current long URL
-		data: [] // all mongodb data
+    const [doc, setDoc] = useState({
+		long: "", // long URL user input
+		short: "" // short URL suffix that corresponds with long
 	});
+	const urlDocs = useRef([]); // mongoDB documents
 	
-	useEffect(() => {	
-		if (state.doc.long !== "") {
-			axiosPost({
-				long: state.doc.long,
-				short: state.doc.short
-			}); // post non-empty user inputs to the db.
-		}	
+	useEffect(() => {		
 		axiosGet((val) => {
-			const document = (state.doc.long === "" ||
-				state.data.length === val.length
-			) ? {} : val[getIndexOfLongURL(state, val)]; 
-			setState({
-				doc: {
+			if (doc.long !== "" && urlDocs.current.length < val.length) {
+				setDoc({
 					long: "",
-					short: (document === {}) ? state.doc.short : 
-						`http://localhost:5000/${document.short}`, 
-					id: (document === {}) ? state.doc.id : document["_id"].str
-				},
-				data: val
-			});
+					short: `http://localhost:5000/${val[val.length - 1].short}`
+				});
+			} // only set the doc if user entered a long URL and the backend thinks its valid
+			urlDocs.current = [" "].concat(val).slice(1);
 		});
-	}, [state]);
+	});
 
 	return (
 		<div className="Main">
 			<div className="Unselectable-Text">
-				<h1>Friendly URL</h1>
+				<h1>FriendlyURL</h1>
 				<p className="Subtitle">Make your URLs shorter.</p>
 			</div>
 			<EnterURL 
-				setState={(val) => {
-					setState(val);
+				setDoc={(val) => {
+					setDoc(val);
 				}}
-				getState={() => {
-					return state;
+				getDoc={() => {
+					return doc;
 				}}
 			/>
-			<p className="Short-URL">{state.doc.short}</p>
+			<p className="Short-URL">{doc.short}</p>
 		</div>
 	);
 }

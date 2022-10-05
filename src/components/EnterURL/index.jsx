@@ -1,9 +1,11 @@
 import React, { useRef } from 'react';
+
 import { handleSubmit } from './utils';
 import './style.css';
 
 function EnterURL(props) {
     const urlInputRef = useRef(null);
+    const longURLRef = useRef(props.getDoc().long);
 
     return (
         <form
@@ -11,9 +13,13 @@ function EnterURL(props) {
             autoComplete="off"
             spellCheck="false"
             onSubmit={(event) => {
+                const newLongURL = urlInputRef.current.value.trim();
                 event.preventDefault();
-                handleSubmit(props.getState, props.setState,
-                    urlInputRef.current.value.trim());
+                if (newLongURL !== longURLRef.current) {
+                    handleSubmit(props.getDoc, props.setDoc,
+                        newLongURL);
+                    longURLRef.current = (" ").concat(newLongURL).slice(1);
+                } // prevent same URL from being entered 2+ times in succession
             }}
         >
             <div className="FormInput">

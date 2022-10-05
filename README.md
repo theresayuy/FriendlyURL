@@ -1,3 +1,42 @@
+# FriendlyURL
+Make your URLs shorter.
+
+## About
+FriendlyURL is a simple URL shortener web-app built using the MERN stack.
+
+## Installation Guide
+Clone this repository
+```
+git clone https://github.com/theresayuy/FriendlyURL.git
+```
+
+Install the dependencies
+```
+npm install
+```
+
+Create an `.env` file in the backend folder with the following:
+```
+PORT=5000
+DB_URI=
+```
+Navigate to https://account.mongodb.com/ and create an account or login. Create a free tier shared cluster. Then create a database by entering any custom username and password, and fill the IP field with `0.0.0.0`. Click connect, then click Connect Your Application, and copy the connection URL. It should be in the following format:  
+`mongodb+srv://<username>:<password>@<cluster-address>/?retryWrites=true&w=majority`  
+Copy it and put the database password in the `<password>` part of the URL. Set the variable `DB_URI` to this URL.
+
+## Usage Guide
+Start the backend
+```
+node backend/server.js
+```
+
+Start the frontend
+```
+npm start
+```
+
+---
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

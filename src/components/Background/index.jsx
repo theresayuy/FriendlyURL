@@ -9,7 +9,7 @@ function Background() {
     const WIN_DIM = getWindowDim();
     const STAR_PROPS = [];
     
-    for (let i = 0; i < 69; i++) {
+    for (let i = 0; i < WIN_DIM.winH * 0.10345; i++) {
         STAR_PROPS.push({
             x: (WIN_DIM.winW - 50) * Math.random(),
             y: (WIN_DIM.winH - 50) * Math.random(),
@@ -18,7 +18,7 @@ function Background() {
     }
 
     return (
-        <div class="Background">
+        <div className="Background">
             {
                 STAR_PROPS.map(prop => (
                     <Star
