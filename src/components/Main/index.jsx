@@ -38,7 +38,12 @@ function Main() {
 					return doc;
 				}}
 			/>
-			<p className="Short-URL">{doc.short}</p>
+			<a className="Short-URL"
+				href={doc.short}
+				target="_blank"
+			>
+				{doc.short}
+			</a>
 		</div>
 	);
 }

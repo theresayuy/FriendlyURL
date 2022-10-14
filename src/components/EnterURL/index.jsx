@@ -14,12 +14,8 @@ function EnterURL(props) {
             spellCheck="false"
             onSubmit={(event) => {
                 const newLongURL = urlInputRef.current.value.trim();
+                handleSubmit(props.setDoc, longURLRef, newLongURL);
                 event.preventDefault();
-                if (newLongURL !== longURLRef.current) {
-                    handleSubmit(props.getDoc, props.setDoc,
-                        newLongURL);
-                    longURLRef.current = (" ").concat(newLongURL).slice(1);
-                } // prevent same URL from being entered 2+ times in succession
             }}
         >
             <div className="FormInput">

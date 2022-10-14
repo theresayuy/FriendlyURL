@@ -10,6 +10,7 @@ function Star(props) {
         <img
             className="Star"
             src={STAR_IMG}
+            alt=""
             width={`${getWindowDim().winW * 0.02343}px`}
             height={`${getWindowDim().winW * 0.02343}px`}
             style={{

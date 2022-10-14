@@ -20,7 +20,7 @@ input[type=text] {
 	border: 2px solid #003459;
 	border-radius: 12px;
 	color: #003459;
-	background-color: rgba(255, 255, 255, 0.5);
+	background-color: rgba(255, 255, 255, 0.6);
 	font-family: PleaseWriteSongFF;
 	width: 1000px;
 }
