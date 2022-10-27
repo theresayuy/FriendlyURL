@@ -5,18 +5,22 @@ const URLModel = require('../url-model');
 const ALPHABET = require('../constants').alphabet;
 const validURL = require('valid-url');
 
-function getRandomShortURLSuffix() {
-    let result = "";
-    for (let i = 0; i < 6; i++) {
-        result += ALPHABET.charAt(
+function concatRandomCharacter(result, charsLeft) {
+    if (charsLeft <= 0) {
+        return result;
+    } 
+    return concatRandomCharacter(
+        result + ALPHABET.charAt(
             Math.floor(Math.random() * (ALPHABET.length - 1))
-        );
-    }
+        ), charsLeft - 1
+    );
+}
 
-    return result;
+function getRandomShortURLSuffix() {
+    return concatRandomCharacter("", 6);
 } // returns a string of length 6 of random characters
 
-router.get("/urls", (req, res, next) => {
+router.get("/urls", (_, res, next) => {
     // get all data
     try {
         URLModel.find({}).then((data) => {
