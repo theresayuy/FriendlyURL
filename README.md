@@ -15,7 +15,7 @@ Install the dependencies
 npm install
 ```
 
-Create an `.env` file in the backend folder with the following:
+Create an `.env` file in the root with the following:
 ```
 PORT=5000
 DB_URI=
