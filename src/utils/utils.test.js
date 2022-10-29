@@ -3,7 +3,6 @@ import axios from "axios";
 
 import { getWindowDim } from ".";
 import { handleSubmit } from "../components/EnterURL/utils";
-import { axiosGet } from "../components/Main/utils"
 
 const TEST_URL_1 = "https://en.wikipedia.org/wiki/List_of_Unicode_characters"
 

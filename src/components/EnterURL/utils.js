@@ -8,7 +8,7 @@ function handleSubmit(setDoc, oldLongURLRef, newLongURL) {
     if (newLongURL !== oldLongURLRef.current) {
         axios.post("http://localhost:5000/api/urls", newDoc).then(() => {
             setDoc(newDoc);
-            oldLongURLRef.current = newLongURL
+            oldLongURLRef.current = newLongURL;
         });
     } // don't allow the same URL to be entered 2+ times in succession
     // ( but the same URL can be added 2+ times in the database )
